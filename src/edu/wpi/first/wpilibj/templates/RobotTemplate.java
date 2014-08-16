@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Jaguar;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,12 +19,17 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class RobotTemplate extends IterativeRobot {
+    
+    TPAJoystick joystick;
+    Jaguar jaguar;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-
+        joystick = new TPAJoystick(RobotMap.JOYSTICK_ONE_PORT);
+        jaguar = new Jaguar(RobotMap.MOTOR_PORT);
     }
 
     /**
@@ -37,7 +43,7 @@ public class RobotTemplate extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        jaguar.set(joystick.getX());
     }
     
     /**
